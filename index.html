@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOC<!DOCTYPE html>
 <html lang="en">
 	<head>
 		<meta charset="UTF-8" />
@@ -36,8 +36,9 @@
 	</head>
 	<body>
 		<h1>Welcome to Healy Stream</h1>
-		<p>Enter your username to continue:</p>
+		<p>Enter your username and password to continue:</p>
 		<input type="text" id="username" placeholder="Enter username" />
+		<input type="password" id="password" placeholder="Enter password" />
 		<button onclick="checkAccess()">Enter</button>
 
 		<div id="stream-container">
@@ -54,11 +55,19 @@
 		<script>
 			function checkAccess() {
 				const allowedUser = 'Rapp'; // Set the allowed username
+				const allowedPassword = '6922bee35c6b54fff871'; // Replace with the actual password Rapp provides
 				const enteredUser = document.getElementById('username').value.trim();
+				const enteredPassword = document
+					.getElementById('password')
+					.value.trim();
 
-				if (enteredUser === allowedUser) {
+				if (
+					enteredUser === allowedUser &&
+					enteredPassword === allowedPassword
+				) {
 					document.getElementById('stream-container').style.display = 'flex';
 					document.getElementById('username').style.display = 'none';
+					document.getElementById('password').style.display = 'none';
 					document.querySelector('button').style.display = 'none';
 					document.querySelector('h1').style.display = 'none';
 					document.querySelector('p').style.display = 'none';
@@ -70,7 +79,7 @@
 						parent: ['healy218.github.io', 'localhost'],
 					});
 				} else {
-					alert('Access Denied. This stream is only for Rapp.');
+					alert('Access Denied. Invalid username or password.');
 				}
 			}
 		</script>
